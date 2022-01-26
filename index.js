@@ -17,6 +17,7 @@ const path = require('path');
 const cors = require('cors') // Place this with other requires (like 'path' and 'express')
 const PORT = process.env.PORT || 5000; // So we can run on heroku || (OR) localhost:5000
 
+
 const app = express();
 
 // Route setup. You can implement more in the future!
@@ -69,3 +70,15 @@ app
     res.render('pages/404', { title: '404 - Page Not Found', path: req.url });
   })
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
+
+  mongoose
+  .connect(
+    MONGODB_URL, options
+  )
+  .then(result => {
+    // INSERT HERE! This should be your user handling code implement following the course videos
+    app.listen(PORT);
+  })
+  .catch(err => {
+    console.log(err);
+  });
