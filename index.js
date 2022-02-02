@@ -18,7 +18,6 @@ const cors = require('cors'); // Place this with other requires (like 'path' and
 const mongoose = require('mongoose');
 const PORT = process.env.PORT || 5000; // So we can run on heroku || (OR) localhost:5000
 
-
 const app = express();
 
 // Route setup. You can implement more in the future!
@@ -26,10 +25,11 @@ const ta01Routes = require('./routes/ta01');
 const ta02Routes = require('./routes/ta02');
 const ta03Routes = require('./routes/ta03');
 const ta04Routes = require('./routes/ta04');
+const ta05Routes = require('./routes/ta05');
 
 // team 04 actvity
 const corsOptions = {
-  origin: "https://<your_app_name>.herokuapp.com/",
+  origin: "https://projectcse341.herokuapp.com/",
   optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
@@ -42,7 +42,7 @@ const options = {
   family: 4
 };
 
-const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://<username>:<username>@cse341cluster-3dwlw.mongodb.net/test?retryWrites=true&w=majority";
+const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://haileymg:Hmmajm987!21@projectcse341.twhi4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 //                
 
 app
@@ -59,6 +59,7 @@ app
   .use('/ta02', ta02Routes)
   .use('/ta03', ta03Routes)
   .use('/ta04', ta04Routes)
+  .use('/ta05', ta05Routes)
   .get('/', (req, res, next) => {
     // This is the primary index, always handled last.
     res.render('pages/index', {
